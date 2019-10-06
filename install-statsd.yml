@@ -16,3 +16,4 @@
       service:
           name: collectd
           state: restarted
+          enabled: true
