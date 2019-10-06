@@ -1,0 +1,29 @@
+version: "2"
+services:
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    restart: always
+    ports:
+      - 8080:3000
+    networks:
+      - grafana-net
+    volumes:
+      - grafana-volume
+
+  graphite:
+    image: graphiteapp/graphite-statsd
+    container_name: graphite
+    restart: always
+    ports:
+      - 8081:80
+      - 8082:8126
+    networks:
+      - grafana-net
+
+networks:
+  grafana-net:
+
+volumes:
+  grafana-volume:
+    external: true
